@@ -24,7 +24,7 @@ func skip(int64_t ns, uint64_t seed) -> uint64_t
         return seed;
         
     // compute positive number of seeds to skip
-    uint64_t nskip = (ns > 0LL) ? uint64_t(ns) : (std::numeric_limits<uint64_t>::max() - abs(ns)) + 1uLL;
+    uint64_t nskip = (ns > 0LL) ? uint64_t(ns) : (std::numeric_limits<uint64_t>::max() - uint64_t(abs(ns))) + 1uLL;
 
     // The algorithm here to determine the parameters used to skip ahead is
     // described in the paper F. Brown, "Random Number Generation with Arbitrary Stride,"
