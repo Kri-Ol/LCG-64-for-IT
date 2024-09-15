@@ -10,15 +10,16 @@ static const uint64_t c = 0x1uLL; // could be 0x7uLL as mutual prime to m, see p
 
 static const uint64_t im = 6281218453581128637uLL; // modular inverse from m, using Mathematica ModularInverse[m, 2^64]
 
-func next(uint64_t xi) -> uint64_t { // direct LCG
+func next(const uint64_t xi) -> uint64_t { // direct LCG
     return m*xi + c;
 }
 
-func inverse(uint64_t xp) -> uint64_t { // inverse LCG, such that ilcq(lcg(q)) == q
+func inverse(const uint64_t xp) -> uint64_t { // inverse LCG, such that ilcq(lcg(q)) == q
     return (xp - c)*im;
 }
 
-func skip(int64_t ns, uint64_t seed) -> uint64_t
+func skip(const int64_t  ns,
+          const uint64_t seed) -> uint64_t
 {
     if (ns == 0LL)
         return seed;
