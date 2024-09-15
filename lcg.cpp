@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <cstdlib>
 
-#define func auto
+#include "lcg.hpp"
 
 static const uint64_t m = 0xd1342543de82ef95uLL; // parameters from https://arxiv.org/pdf/2001.05304.pdf, factored [5, 17, 1277, 2908441, 47750621]
 static const uint64_t c = 0x1uLL; // could be 0x7uLL as mutual prime to m, see prime factors above
