@@ -97,5 +97,19 @@ func main() -> int {
         printf("%llu -> %llu -> %llu\n\n", xi, uint64_t(lcg128::next(xi)), uint64_t(lcg128::inverse(lcg128::next(xi))) );
     }    
     
+    {
+        printf("Test 1: 128 skip forward and move\n");
+        int64_t dist = 12345LL;
+        
+        __uint128_t zs = lcg128::skip(__int128_t(dist), xi);
+    
+        __uint128_t z = xi;
+        for( auto _ = 0; _ != dist; ++_) {
+            z = lcg128::next(z);
+        }
+
+        printf("%llu\n\n", uint64_t(zs == z) );
+    }
+    
     return 0;
 }
