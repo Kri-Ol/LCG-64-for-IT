@@ -2,18 +2,21 @@
 
 #include "lcg64.hpp"
 
-constexpr uint64_t m = 0xd1342543de82ef95uLL; // parameters from https://arxiv.org/pdf/2001.05304.pdf, factored [5, 17, 1277, 2908441, 47750621]
+constexpr uint64_t m = 0xd1'34'25'43'de'82'ef'95uLL; // parameters from https://arxiv.org/pdf/2001.05304.pdf, factored [5, 17, 1277, 2908441, 47750621]
 constexpr uint64_t c = 0x1uLL; // could be 0x7uLL as mutual prime to m, see prime factors above
 
 constexpr uint64_t im = 6281218453581128637uLL; // modular inverse from m, using Mathematica ModularInverse[m, 2^64]
+
 
 func lcg64::next(const uint64_t xi) -> uint64_t { // direct LCG
     return m*xi + c;
 }
 
+
 func lcg64::inverse(const uint64_t xp) -> uint64_t { // inverse LCG, such that ilcq(lcg(q)) == q
     return (xp - c)*im;
 }
+
 
 func lcg64::skip(const int64_t  ns,
                  const uint64_t seed) -> uint64_t
