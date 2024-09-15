@@ -1,9 +1,8 @@
 #include <limits>
 
-#include <cstdint>
-#include <cstdlib>
+//#include <cstdlib>
 
-#include "lcg.hpp"
+#include "lcg64.hpp"
 
 constexpr uint64_t m = 0xd1342543de82ef95uLL; // parameters from https://arxiv.org/pdf/2001.05304.pdf, factored [5, 17, 1277, 2908441, 47750621]
 constexpr uint64_t c = 0x1uLL; // could be 0x7uLL as mutual prime to m, see prime factors above

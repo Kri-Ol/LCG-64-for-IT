@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "lcg.hpp"
+#include "lcg64.hpp"
 #include "lcg128.hpp"
 
 
