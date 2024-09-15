@@ -7,5 +7,5 @@ project(LCG
   LANGUAGES CXX
 )
 
-add_executable(lcg main.cpp lcg.cpp)
+add_executable(lcg main.cpp lcg.cpp lcg128.cpp)
 target_compile_features(lcg PUBLIC cxx_std_20)

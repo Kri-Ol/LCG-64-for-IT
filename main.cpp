@@ -4,25 +4,27 @@
 #include <cstdlib>
 
 #include "lcg.hpp"
+#include "lcg128.hpp"
+
 
 func main() -> int {
-    
+        
     uint64_t xi = 9876103423452345341uLL;
     
     {
         printf("Test 0: inverse\n");
-        printf("%llu -> %llu -> %llu\n\n", xi, next(xi), inverse(next(xi)) );
+        printf("%llu -> %llu -> %llu\n\n", xi, lcg64::next(xi), lcg64::inverse(lcg64::next(xi)) );
     }
     
     {
         printf("Test 1: skip forward and move\n");
         int64_t dist = 12345LL;
         
-        uint64_t zs = skip(dist, xi);
+        uint64_t zs = lcg64::skip(dist, xi);
     
         uint64_t z = xi;
         for( auto _ = 0; _ != dist; ++_) {
-            z = next(z);
+            z = lcg64::next(z);
         }
 
         printf("%llu -> %llu\n\n", zs, z );
@@ -35,9 +37,9 @@ func main() -> int {
         uint64_t z = xi;
      
         // done in three steps, two 2^{63}-1 steps and then 2    
-        z = skip(dist, z);
-        z = skip(dist, z);
-        z = skip(2LL, z);
+        z = lcg64::skip(dist, z);
+        z = lcg64::skip(dist, z);
+        z = lcg64::skip(2LL, z);
         
         printf("%llu -> %llu\n\n", xi, z ); 
     }
@@ -48,7 +50,7 @@ func main() -> int {
         
         uint64_t z = xi;
         
-        z = skip(dist, z);
+        z = lcg64::skip(dist, z);
         printf("%llu -> %llu\n\n", xi, z );        
     }
 
@@ -56,9 +58,9 @@ func main() -> int {
         printf("Test 4: skip backward and forward\n");
         int64_t dist = -12345LL;
         
-        uint64_t zb = skip(dist, xi);
+        uint64_t zb = lcg64::skip(dist, xi);
         
-        uint64_t z = skip(abs(dist), zb);
+        uint64_t z = lcg64::skip(abs(dist), zb);
     
         printf("%llu -> %llu -> %llu\n\n", xi, zb, z);
     }
@@ -67,11 +69,11 @@ func main() -> int {
         printf("Test 5: skip backward and move forward\n");
         int64_t dist = -12345LL;
         
-        uint64_t zb = skip(dist, xi);
+        uint64_t zb = lcg64::skip(dist, xi);
         
         uint64_t z = zb;
         for( auto _ = 0; _ != abs(dist); ++_) {
-            z = next(z);
+            z = lcg64::next(z);
         }
     
         printf("%llu -> %llu -> %llu\n\n", xi, zb, z);
@@ -84,11 +86,16 @@ func main() -> int {
         uint64_t z = xi;
      
         // done in two steps, two -2^{63} steps    
-        z = skip(dist, z);
-        z = skip(dist, z);
+        z = lcg64::skip(dist, z);
+        z = lcg64::skip(dist, z);
         
         printf("%llu -> %llu\n\n", xi, z ); 
     }
+    
+    {
+        printf("Test 7: 128 inverse\n");
+        printf("%llu -> %llu -> %llu\n\n", xi, uint64_t(lcg128::next(xi)), uint64_t(lcg128::inverse(lcg128::next(xi))) );
+    }    
     
     return 0;
 }
