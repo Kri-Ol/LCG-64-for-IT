@@ -3,7 +3,7 @@
 #include "lcg128.hpp"
 
 constexpr __uint128_t m = 0xdb'36'35'77'34'e3'4a'bb'00'50'd0'76'1f'cd'fc'15_u128; // parameters from https://arxiv.org/pdf/2001.05304.pdf, 
-                                                                      // factored [5, 23, 229, 11064454130225395449793397439790987]
+                                                                                  // factored [5, 23, 229, 11064454130225395449793397439790987]
 constexpr __uint128_t c = 0x7_u128; // could be 0x7uLL as mutual prime to m, see prime factors above
 
 constexpr __uint128_t im = 295713064423480201165222953644432290621_u128; // modular inverse from m, using Mathematica ModularInverse[m, 2^128]
