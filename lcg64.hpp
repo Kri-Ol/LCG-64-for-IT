@@ -2,10 +2,6 @@
 
 #include <cstdint>
 
-#ifndef func
-    #define func auto
-#endif
-
 namespace lcg64
 {
 

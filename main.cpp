@@ -6,6 +6,9 @@
 #include "lcg64.hpp"
 #include "lcg128.hpp"
 
+inline func u01(uint64_t x) -> double {
+    return double(x >> 11) * 0x1.0p-53;
+}
 
 func main() -> int {
         

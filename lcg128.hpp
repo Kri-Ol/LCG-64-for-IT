@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef func
-    #define func auto
-#endif
 
 namespace lcg128
 {
