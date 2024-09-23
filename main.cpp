@@ -101,7 +101,7 @@ func main() -> int {
     }    
     
     {
-        printf("Test 1: 128 skip forward and move\n");
+        printf("Test 8: 128 skip forward and move\n");
         int64_t dist = 12345LL;
         
         __uint128_t zs = lcg128::skip(__int128_t(dist), xi);
