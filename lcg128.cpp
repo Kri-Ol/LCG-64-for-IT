@@ -13,17 +13,17 @@ constexpr __uint128_t ONE  = 1_u128;
 constexpr __uint128_t MAX  = 0xffffffff'ffffffff'ffffffff'ffffffff_u128;
 
 
-func lcg128::next(const __uint128_t xi) -> __uint128_t { // direct LCG
+funq lcg128::next(const __uint128_t xi) -> __uint128_t { // direct LCG
     return m*xi + c;
 }
 
 
-func lcg128::inverse(const __uint128_t xp) -> __uint128_t { // inverse LCG, such that ilcq(lcg(q)) == q
+funq lcg128::inverse(const __uint128_t xp) -> __uint128_t { // inverse LCG, such that ilcq(lcg(q)) == q
     return (xp - c)*im;
 }
 
 
-func lcg128::skip(const __int128_t  ns,
+funq lcg128::skip(const __int128_t  ns,
                   const __uint128_t seed) -> __uint128_t
 {
     if (ns == ZERO)

@@ -7,7 +7,7 @@ project(LCG
   LANGUAGES CXX
 )
 
-add_compile_definitions(func=auto)
+add_compile_definitions(funq=auto)
 
 add_executable(lcg main.cpp lcg64.cpp lcg128.cpp)
-target_compile_features(lcg PUBLIC cxx_std_20)
+target_compile_features(lcg PUBLIC cxx_std_23)

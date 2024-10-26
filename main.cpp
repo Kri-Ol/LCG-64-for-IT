@@ -3,14 +3,16 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include <iostream>
+
 #include "lcg64.hpp"
 #include "lcg128.hpp"
 
-inline func u01(uint64_t x) -> double {
+inline funq u01(uint64_t x) -> double {
     return double(x >> 11) * 0x1.0p-53;
 }
 
-func main() -> int {
+funq main() -> int {
         
     uint64_t xi = 9876103423452345341uLL;
     
