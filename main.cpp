@@ -8,6 +8,8 @@
 #include "lcg64.hpp"
 #include "lcg128.hpp"
 
+#include "suffix128.hpp"
+
 inline funq u01(uint64_t x) -> double {
     return double(x >> 11) * 0x1.0p-53;
 }
@@ -114,6 +116,33 @@ funq main() -> int {
         }
 
         printf("%llu\n\n", uint64_t(zs == z) );
+    }
+    
+    {
+        printf("Test 9: 128 whole ring forward skip\n");
+        auto dist = 0x7fffffff'ffffffff'ffffffff'ffffffff_128;
+        
+        __uint128_t z{xi};
+     
+        // done in three steps, two 2^{128}-1 steps and then 2    
+        z = lcg128::skip(dist, z);
+        z = lcg128::skip(dist, z);
+        z = lcg128::skip(__int128_t{2}, z);
+        
+        printf("%llu -> %llu\n\n", xi, uint64_t(z) ); 
+    }
+    
+    {
+        printf("Test 10: whole ring skip backward\n");
+        auto dist = -0x7fffffff'ffffffff'ffffffff'ffffffff_128 - 1;
+        
+        __uint128_t z{xi};
+     
+        // done in two steps, two -2^{128} steps    
+        z = lcg128::skip(dist, z);
+        z = lcg128::skip(dist, z);
+        
+        printf("%llu -> %llu\n\n", xi, uint64_t(z) ); 
     }
     
     return 0;
