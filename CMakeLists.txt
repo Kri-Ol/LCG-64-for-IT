@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(LCG)
 project(LCG
-  VERSION 0.0.2
+  VERSION 0.0.3
   DESCRIPTION "LCG 64/128 with all features"
   LANGUAGES CXX
 )
